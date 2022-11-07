@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+	<persistence-unit name="Actividad8" transaction-type="RESOURCE_LOCAL">
+		<class>net.zabalburu.actividad8.modelo.Artista</class>
+		<class>net.zabalburu.actividad8.modelo.Album</class>
+		<class>net.zabalburu.actividad8.modelo.Pista</class>
+		<class>net.zabalburu.actividad8.modelo.Genero</class>
+		<class>net.zabalburu.actividad8.modelo.Usuario</class>
+		<class>net.zabalburu.actividad8.modelo.UsuarioPista</class>
+		<properties>
+			<property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost:1234;databaseName=Chinook"/>
+			<property name="javax.persistence.jdbc.user" value="sa"/>
+			<property name="javax.persistence.jdbc.password" value="a404daw2"/>
+			<property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+			<property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
+            <property name="javax.persistence.schema-generation.database.action" value="update"/>
+        </properties>
+	</persistence-unit>
+</persistence>
