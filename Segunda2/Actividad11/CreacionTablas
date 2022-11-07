@@ -1,0 +1,22 @@
+create table Categorias11(
+	idCategoria integer identity(1,1) primary key,
+	nombre varchar(255)
+);
+
+create table Productos11(
+	idProd integer identity(1,1) primary key,
+	nombre varchar(255),
+	idCategoria integer references Categorias11
+);
+
+insert into Categorias11(nombre) values('Categoria1');
+insert into Categorias11(nombre) values('Categoria2');
+insert into Categorias11(nombre) values('Categoria3');
+insert into Categorias11(nombre) values('Categoria4');
+insert into Categorias11(nombre) values('Categoria5');
+
+insert into Productos11(nombre, idCategoria) values('Producto1', 1);
+insert into Productos11(nombre, idCategoria) values('Producto2', 2);
+insert into Productos11(nombre, idCategoria) values('Producto3', 3);
+insert into Productos11(nombre, idCategoria) values('Producto4', 4);
+insert into Productos11(nombre, idCategoria) values('Producto5', 5);

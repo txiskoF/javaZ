@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+<!-- <bean id="prod1" class="net.zabalburu.springdi.modelo.Producto">
+		<property name="categoria" ref="categoria1"></property>
+	</bean>
+	<bean id="prod2" class="net.zabalburu.springdi.modelo.Producto">
+		<property name="id" value="2"></property>
+		<property name="nombre" value="Producto 2"></property>
+		<property name="precio" value="125.70"></property>
+		<property name="categoria" ref="categoria1"></property>
+	</bean>
+	<bean id="prod3" class="net.zabalburu.springdi.modelo.Producto">
+		<constructor-arg name="id" value="3"></constructor-arg>
+		<constructor-arg name="nombre" value="Producto 3"></constructor-arg>
+		<constructor-arg name="precio" value="30.75"></constructor-arg>
+		<property name="categoria" ref="categoria2"></property>
+	</bean>
+	<bean id="categoria1" class="net.zabalburu.springdi.modelo.Categoria">
+		<property name="id" value="1"></property>
+		<property name="descripcion" value="Categoría 1"></property>
+	</bean>
+	
+	<bean id="categoria2" class="net.zabalburu.springdi.modelo.Categoria">
+		<constructor-arg name="id" value="2"></constructor-arg>
+		<constructor-arg name="descripcion" value="Categoría 2"></constructor-arg>
+	</bean>  -->
+	<bean id="conexion" class="net.zabalburu.springdi.util.Conexion" lazy-init="true">
+		<constructor-arg name="clase" value="${clase}"></constructor-arg>
+		<property name="url" value="${url}"></property>
+		<property name="usuario" value="${usuario}"></property>
+		<property name="password" value="${password}"></property>
+	</bean>
+	<bean id="productoDao" class="net.zabalburu.springdi.dao.ProductoList" lazy-init="true">
+	</bean>	
+	<bean id="productoBBDD" class="net.zabalburu.springdi.dao.ProductoBBDD" lazy-init="true">
+		<property name="conexion" ref="conexion"></property>
+	</bean>
+	<bean id="servicio" class="net.zabalburu.springdi.servicio.ProductoServicio" scope="prototype" lazy-init="false">
+		<property name="dao" ref="productoDao"></property>
+		<!-- <constructor-arg name="dao" ref="productoDao"></constructor-arg>   -->
+	</bean>
+	<context:property-placeholder location="conexion.prop"/>
+</beans>

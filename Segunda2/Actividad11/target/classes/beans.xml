@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
+
+	<bean id ="conexion" class="net.zabalburu.springdi.conexion.Conexion">
+		<constructor-arg name="clase" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"></constructor-arg>
+		<property name="url" value="jdbc:sqlserver://localhost:1234;databaseName=Northwind"></property>
+		<property name="usuario" value="sa"></property>
+		<property name="password" value="a404daw2"></property>
+	</bean>
+	
+	<bean id="productoBBDD" class="net.zabalburu.springdi.dao.ProductoBBDD">
+		<constructor-arg name="conexion" ref="conexion"></constructor-arg>
+	</bean>
+	
+
+	<bean id="productoDao" class="net.zabalburu.springdi.dao.ProductoList">
+	</bean>	
+	<bean id="servicio" class="net.zabalburu.springdi.servicio.ProductoServicio">
+		<property name="dao" ref="productoDao"></property>
+		<!-- <constructor-arg name="dao" ref="productoDao"></constructor-arg>   -->
+	</bean>
+</beans>
