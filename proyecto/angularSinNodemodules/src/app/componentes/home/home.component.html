@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-6" *ngIf="!alguienLogueado">
+        <h4>Haga login para iniciar</h4>
+    </div>
+    <div class="col-6" *ngIf="alguienLogueado">
+        <h4 class="m-3">Bienvenid@, {{usuarioLogueado.nombre}} {{usuarioLogueado.primerApellido}} {{usuarioLogueado.segundoApellido}}</h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 text-center">
+        <img style="opacity: 0.3" src="assets\imagenes\logo3.jpg" alt="logo" height="400">
+    </div>
+</div>

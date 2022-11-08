@@ -1,0 +1,51 @@
+<h4 *ngIf="crearModificar == 'crear'">Nuevo Trabajo</h4>
+<h4 *ngIf="crearModificar == 'modificar'">Modificar Trabajo</h4>
+
+<form>
+  <div class="row">
+    <div class="col-5 mb-3">
+      <label for="comboCategorias">Categoría</label>
+      <select class="form-select" id="comboCategorias" [disabled]="crearModificar == 'modificar'"
+      [(ngModel)]="categoriaSeleccionada" name="comboCategorias">
+          <option *ngFor="let cat of listadoCategorias" [ngValue]="cat.id">{{cat.categoria}}</option>
+      </select>
+      <div *ngIf="errorEnCategoria">
+        <p class="text-danger">Debe seleccionar una categoría</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-10 mb-3">
+      <label for="descripcion">Descripción</label>
+      <input type="text" class="form-control" id="descripcion" name="descripcion" [(ngModel)]="datosTrabajo.trabajo">
+      <div *ngIf="errorEnDescripcion">
+        <p class="text-danger">Debe indicar una descripción</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3 mb-3">
+      <label for="precio">Precio/hora en euros (€)</label>
+      <input type="number" class="form-control" id="precio" name="precio" [(ngModel)]="datosTrabajo.precio">
+      <div *ngIf="errorEnPrecio">
+        <p class="text-danger">Debe indicar un precio</p>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="crearModificar == 'modificar'">
+    <div class="col-2 mb-3">
+      <button class="btn btn-primary" type="submit" (click)="modificar()">Guardar</button>
+    </div>
+    <div class="col-5" *ngIf="trabajoActualizadoOK">
+      <p class="text-success">El trabajo se ha actualizado correctamente</p>
+    </div>
+  </div>
+  <div class="row" *ngIf="crearModificar == 'crear'">
+    <div class="col-2 mb-3">
+      <button class="btn btn-primary" type="submit" (click)="crear()">Crear</button>
+    </div>
+    <div class="col-5" *ngIf="trabajoCreadoOK">
+      <p class="text-success">El trabajo se ha creado correctamente</p>
+    </div>
+  </div>
+</form>
